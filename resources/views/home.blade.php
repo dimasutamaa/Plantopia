@@ -21,8 +21,7 @@
     </div>
 
     <div>
-        <h3>Halo semua anjing</h3>
-        <h1>Kontol klen</h1>
+
     </div>
 </div>
 @endsection
