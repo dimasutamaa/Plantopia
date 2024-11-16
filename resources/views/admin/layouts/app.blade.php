@@ -5,77 +5,71 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Plantopia - Admin</title>
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-    <link rel="stylesheet" href="{{ asset('admin-assets/plugins/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin-assets/css/adminlte.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/css/custom.css') }}">
+
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="https://kit.fontawesome.com/703c7fe880.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-            </ul>
+<body>
+    @include('admin.layouts.sidebar')
 
-            <ul class="ml-auto navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
+    <nav class="shadow-sm navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="btn btn-outline-secondary me-2" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a class="p-0 pr-3 nav-link" data-toggle="dropdown" href="#">
-                        <img src="{{ asset('admin-assets/img/user.png') }}" class='img-circle elevation-2'
-                            width="40" height="40" alt="">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <img src="{{ asset('admin-assets/img/user.png') }}" class="rounded-circle" width="40"
+                            height="40" alt="User">
                     </a>
-                    <div class="p-3 dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <h4 class="mb-0 h4"><strong>{{ Auth::user()->name }}</strong></h4>
-                        <div class="mb-3">{{ Auth::user()->email }}</div>
-                        <div class="dropdown-divider"></div>
-                        <a href="{{ route('logout') }}" class="dropdown-item text-danger"
-                            onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                            <i class="mr-2 fas fa-sign-out-alt"></i> Logout
-                        </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <p class="dropdown-header fs-5">{{ Auth::user()->name }}</p>
+                            <small class="dropdown-item-text fs-6">{{ Auth::user()->email }}</small>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}" class="dropdown-item text-danger"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
                 </li>
             </ul>
-        </nav>
-
-        @include('admin.layouts.sidebar')
-
-        <div class="content-wrapper">
-            @yield('content')
         </div>
+    </nav>
 
-        <footer class="main-footer">
-            2024 All Right Reserved. Terms of use Plantopia.
-        </footer>
+    <main class="content-wrapper">
+        @yield('content')
+    </main>
 
-        <script src="{{ asset('admin-assets/plugins/jquery/jquery.min.js') }}"></script>
-        <script src="{{ asset('admin-assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('admin-assets/js/adminlte.min.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        @yield('customJs')
+    <script>
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const body = document.body;
 
-    </div>
+        sidebarToggle.addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('hidden');
+            body.classList.toggle('collapsed-sidebar');
+        });
+    </script>
+
+    @yield('customJs')
 </body>
 
 </html>

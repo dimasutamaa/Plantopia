@@ -1,19 +1,17 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="my-2 container-fluid">
-            <div class="mb-2 row">
-                <div class="col-sm-6">
-                    <h1>Create Product</h1>
-                </div>
-                <div class="text-right col-sm-6">
-                    <a href="{{ route('product.list') }}" class="btn btn-primary">Back</a>
-                </div>
+    <div class="my-2 container-fluid">
+        <div class="mb-2 row">
+            <div class="col-sm-6">
+                <h2>Create Product</h2>
+            </div>
+            <div class="text-end col-sm-6">
+                <a href="{{ route('product.list') }}" class="btn btn-primary">Back</a>
             </div>
         </div>
-    </section>
-    <section class="content">
+    </div>
+    <section>
         <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 

@@ -1,18 +1,16 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="my-2 container-fluid">
-            <div class="mb-2 row">
-                <div class="col-sm-6">
-                    <h1>Products</h1>
-                </div>
-                <div class="text-right col-sm-6">
-                    <a href="{{ route('product.create') }}" class="btn btn-primary">New Product</a>
-                </div>
+    <div class="my-2 container-fluid">
+        <div class="mb-2 row">
+            <div class="col-sm-6">
+                <h2>Products</h2>
+            </div>
+            <div class="text-end col-sm-6">
+                <a href="{{ route('product.create') }}" class="btn btn-primary">New Product</a>
             </div>
         </div>
-    </section>
+    </div>
 @endsection
 
 @section('customJs')
