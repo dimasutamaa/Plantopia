@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -16,4 +17,8 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/admin/products', [ProductController::class, 'index'])->name('product.list');
+    Route::get('/admin/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/admin/product/create', [ProductController::class, 'store'])->name('product.store');
 });
