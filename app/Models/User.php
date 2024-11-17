@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->type === 'admin';
     }
+
+    public function isCustomer()
+    {
+        return $this->type === 'user';
+    }
 }
