@@ -97,9 +97,16 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
-                                        {{ __('History') }}
-                                    </a>
+
+                                    @if (Auth::user() && Auth::user()->isAdmin())
+                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                            {{ __('Admin Panel') }}
+                                        </a>
+                                    @else
+                                        <a class="dropdown-item" href="#">
+                                            {{ __('History') }}
+                                        </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
