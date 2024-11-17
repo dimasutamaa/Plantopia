@@ -1,20 +1,46 @@
 @extends('layouts.app')
-
 @section('content')
-    <div class="container">
-        <div class="p-5 mb-5 text-center rounded bg-image"
-            style="background-image: url('https://placehold.jp/1200x500.png'); height: 500px;">
-            <div class="d-flex align-items-center h-100">
-                <div class="container text-start">
-                    <h1 class="mb-3 text-white" style="font-size: 7rem;">Buy your dream plants.</h1>
+    <!-- Banner -->
+    <div class="p-5 text-center bg-image"
+        style="
+    background-image: url('assets/landing-page-background.png');
+    height: 400px;
+    margin-top: 20px;
+  ">
+        <div class="mask">
+            <div class="d-flex justify-content-center align-items-end h-100">
+                <div class="text-white text-center">
+                    <h1 class="mb-3">Find Your Dream Plants Here</h1>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- Banner-->
 
-        <div class="mb-5">
-            <h2>Latest Product</h2>
-            <h5 class="text-secondary">Easiest way to healthy life by buying the latest plants</h5>
-        </div>
+    {{-- Search --}}
+    <div class="container mt-4">
+        <section class="mb-4 justify-content-between d-flex">
+            <div class="input-group" style="width: 250px">
+                <input type="search" id="form1" class="form-control form-control-sm" placeholder="Search"
+                    aria-label="Search">
+                <button type="button" class="btn btn-primary btn-sm">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <span class="me-2">Sort</span>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="1">Highest</option>
+                    <option value="2">Lowest</option>
+                </select>
+            </div>
+        </section>
+    </div>
+    {{-- Search --}}
+
+    {{-- Product --}}
+    <div class="container">
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
@@ -79,8 +105,25 @@
             </div>
         </div>
 
-        <div class="mt-5 d-flex justify-content-center">
-                <a href="{{ route('shop') }}" class="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-offset-3-hover fs-5">Browse All Product</a>
-        </div>
+        <nav aria-label="Page navigation example" class="d-flex justify-content-end mt-2"  >
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
+    {{-- Product --}}
+
+
 @endsection
