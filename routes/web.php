@@ -21,4 +21,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/products', [ProductController::class, 'index'])->name('product.list');
     Route::get('/admin/product/create', [ProductController::class, 'create'])->name('product.create');
     Route::post('/admin/product/create', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/admin/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::put('/admin/product/edit/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('/admin/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
 });
