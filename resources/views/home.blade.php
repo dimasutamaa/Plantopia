@@ -17,70 +17,30 @@
         </div>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card">
-                    <img src="https://placehold.jp/100x100.png" class="card-img-top" alt="card example" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
+            @forelse ($products as $product)
+                <div class="col">
+                    <a href="#" class="link-underline link-underline-opacity-0">
+                        <div class="bg-transparent border-0 card">
+                            <img src="{{ asset($product->product_image) }}" class="card-img-top rounded-4"
+                                alt="card example" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->title }}</h5>
+                                <p class="card-text">{{ 'Rp ' . number_format($product->price, 2, ',', '.') }}</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="https://placehold.jp/100x100.png" class="card-img-top" alt="card example" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
+            @empty
+                <div class="mx-auto text-center text-secondary-emphasis">
+                    <h4>Data Products not yet available.</h4>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="https://placehold.jp/100x100.png" class="card-img-top" alt="card example" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="https://placehold.jp/100x100.png" class="card-img-top" alt="card example" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="https://placehold.jp/100x100.png" class="card-img-top" alt="card example" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card">
-                    <img src="https://placehold.jp/100x100.png" class="card-img-top" alt="card example" />
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
 
         <div class="mt-5 d-flex justify-content-center">
-                <a href="{{ route('shop') }}" class="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-offset-3-hover fs-5">Browse All Product</a>
+            <a href="{{ route('shop') }}"
+                class="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-offset-3-hover fs-5">Browse
+                All Product</a>
         </div>
     </div>
 @endsection
