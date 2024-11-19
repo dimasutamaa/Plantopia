@@ -1,6 +1,6 @@
 @props(['product'])
 
-<a href="#" class="link-underline link-underline-opacity-0">
+<a href="{{ route('products.show', $product->id) }}" class="link-underline link-underline-opacity-0">
     <div class="bg-transparent border-0 card">
         <img src="{{ asset($product->product_image) }}" class="card-img-top rounded-4" alt="card example" />
         <div class="card-body">

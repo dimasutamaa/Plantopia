@@ -12,6 +12,7 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products', [ShopController::class, 'index'])->name('shop');
+Route::get('/products/{id}', [ShopController::class, 'show'])->name('products.show');
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/profile', [UserController::class, 'index'])->name('user.profile');
