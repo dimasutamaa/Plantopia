@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\HomeController;
@@ -20,6 +21,12 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::get('/admin/categories', [CategoryController::class, 'index'])->name('category.list');
+    Route::post('/admin/categories', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/admin/categories/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/admin/categories/edit/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/admin/categories/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
     Route::get('/admin/products', [ProductController::class, 'index'])->name('product.list');
     Route::get('/admin/product/create', [ProductController::class, 'create'])->name('product.create');

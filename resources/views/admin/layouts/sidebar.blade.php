@@ -4,7 +4,7 @@
         <ul>
             <li><a href="{{ route('admin.dashboard') }}"><i class="nav-icon fas fa-tachometer-alt"></i>
                     Dashboard</a></li>
-            <li><a href="#"><i class="nav-icon fas fa-file-alt"></i> Category</a></li>
+            <li><a href="{{ route('category.list') }}"><i class="nav-icon fas fa-file-alt"></i> Category</a></li>
             <li><a href="{{ route('product.list') }}"><i class="nav-icon fas fa-tag"></i> Products</a></li>
             <li><a href="#"><i class="nav-icon fas fa-shopping-bag"></i> Orders</a></li>
         </ul>
