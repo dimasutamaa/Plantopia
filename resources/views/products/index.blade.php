@@ -1,17 +1,17 @@
 @extends('layouts.app')
+
 @section('content')
     <!-- Banner -->
-    <div class="p-5 text-center bg-image"
-        style="
-    background-image: url('assets/landing-page-background.png');
-    height: 400px;
-    margin-top: 20px;
-  ">
-        <div class="mask">
-            <div class="d-flex justify-content-center align-items-end h-100">
-                <div class="text-center text-white">
-                    <h1 class="mb-3">Find Your Dream Plants Here</h1>
-                </div>
+    <div class="w-full p-5 mb-5 text-center bg-image"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+           url('assets/landing-page-background.png'); 
+           background-repeat: no-repeat; 
+           background-size: cover; 
+           background-position: center; 
+           height: 400px;">
+        <div class="d-flex align-items-center h-100">
+            <div class="container">
+                <h1 class="mb-3 text-white" style="font-size: 6rem;">Find Your Dream <br> Plants Here</h1>
             </div>
         </div>
     </div>

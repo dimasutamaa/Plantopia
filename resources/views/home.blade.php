@@ -3,7 +3,12 @@
 @section('content')
     <div class="container">
         <div class="p-5 mb-5 text-center rounded bg-image"
-            style="background-image: url('https://placehold.jp/1200x500.png'); height: 500px;">
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+            url('assets/landing-page-background.png'); 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position: center; 
+            height: 500px;">
             <div class="d-flex align-items-center h-100">
                 <div class="container text-start">
                     <h1 class="mb-3 text-white" style="font-size: 7rem;">Buy your dream plants.</h1>
