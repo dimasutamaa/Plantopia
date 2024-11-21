@@ -65,7 +65,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::user() && Auth::user()->isCustomer())
                             <li class = "nav-item">
-                                <a class="nav-link d-flex align-items-center" href = "#">
+                                <a class="nav-link d-flex align-items-center" href = "{{route('user.cart')}}">
                                     <svg class="me-2"width="25" height="25" viewBox="0 0 30 30" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -106,7 +106,7 @@
                                             {{ __('Admin Panel') }}
                                         </a>
                                     @else
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('orderHistory')}}">
                                             {{ __('History') }}
                                         </a>
                                     @endif
