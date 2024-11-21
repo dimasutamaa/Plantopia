@@ -37,7 +37,7 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                        <button class="btn btn-primary">Add to Cart</button>
+                        <button class="btn fw-medium btn-success">Add to Cart</button>
                     </div>
                 </div>
             </div>
