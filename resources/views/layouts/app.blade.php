@@ -106,7 +106,7 @@
                                             {{ __('Admin Panel') }}
                                         </a>
                                     @else
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('orderHistory')}}">
                                             {{ __('History') }}
                                         </a>
                                     @endif
