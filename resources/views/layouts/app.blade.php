@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Plantopia') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -46,7 +46,7 @@
         <nav class="navbar navbar-expand-md navbar-light" style="background-color: #f8fafc">
             <div class="container">
                 <a class="navbar-brand fw-semibold navbar-logo fs-2" href="{{ url('/') }}">
-                    {{ config('app.name', 'Plantopia') }}
+                    {{ config('app.name') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
