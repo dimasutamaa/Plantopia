@@ -18,6 +18,13 @@ class ShopController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('products.details', compact('product'));
+        $similar_products = Product::with('category')
+            ->where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->inRandomOrder()
+            ->limit(3)
+            ->get();
+
+        return view('products.details', compact('product', 'similar_products'));
     }
 }

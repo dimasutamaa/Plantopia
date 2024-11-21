@@ -7,7 +7,7 @@
             <div class="col-md-6">
                 <div class="d-flex flex-column align-items-center">
                     <!-- Gambar utama -->
-                    <img src="{{ asset($product->product_image) }}" class="img-fluid rounded border" alt="Main Product"
+                    <img src="{{ asset($product->product_image) }}" class="border rounded-4 img-fluid" alt="Main Product"
                         style="width: 70%;">
                 </div>
             </div>
@@ -27,9 +27,10 @@
                         {{ $product->description }}
                     </p>
                     <!-- Quantity dan Tombol Add to Cart -->
-                    <div class="d-flex align-items-center mt-3">
+                    <div class="mt-3 d-flex align-items-center">
                         <label for="quantity" class="me-3 fw-bold">Quantity:</label>
-                        <select class="form-select me-2" id="floatingSelect" aria-label="Floating label select example" style="width:60px">
+                        <select class="form-select me-2" id="floatingSelect" aria-label="Floating label select example"
+                            style="width:60px">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -43,40 +44,18 @@
         </div>
     </div>
 
-
     <div class="container mt-5">
         <h3 class="fw-bold">Similar Plants</h3>
         <div class="row">
-            <!-- Product Card 1 -->
-            <div class="col-md-4">
-                <div class="card border-0">
-                    <img src="{{ asset($product->product_image) }}" class="card-img-top rounded" alt="Plant 1">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">Natural Plant</h5>
-                        <p class="card-text text-muted">Rp. 89,000.00</p>
-                    </div>
+            @forelse ($similar_products as $similar_product)
+                <div class="col">
+                    <x-product-card :product="$similar_product" />
                 </div>
-            </div>
-            <!-- Product Card 2 -->
-            <div class="col-md-4">
-                <div class="card border-0">
-                    <img src="{{ asset($product->product_image) }}" class="card-img-top rounded" alt="Plant 2">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">Natural Plant</h5>
-                        <p class="card-text text-muted">Rp. 89,000.00</p>
-                    </div>
+            @empty
+                <div class="mt-3 text-center text-muted">
+                    <h5>this plant does not have similar plants yet</h5>
                 </div>
-            </div>
-            <!-- Product Card 3 -->
-            <div class="col-md-4">
-                <div class="card border-0">
-                    <img src="{{ asset($product->product_image) }}" class="card-img-top rounded" alt="Plant 3">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-1">Natural Plant</h5>
-                        <p class="card-text text-muted">Rp. 89,000.00</p>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 @endsection
