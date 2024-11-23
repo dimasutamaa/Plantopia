@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\customer\OrderController;
+use App\Http\Controllers\customer\WishlistController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
@@ -20,6 +21,7 @@ Route::get('/products/{id}', [ShopController::class, 'show'])->name('products.sh
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/profile', [UserController::class, 'index'])->name('user.profile');
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart');
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
     Route::get('/order', [OrderController::class, 'index'])->name('orderHistory');
     Route::get('/order/details', [OrderController::class, 'show'])->name('orderDetails');
 });
