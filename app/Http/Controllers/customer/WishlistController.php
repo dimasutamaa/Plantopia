@@ -12,7 +12,9 @@ class WishlistController extends Controller
 {
     public function index()
     {
-        return view('customer.wishlist');
+        $wishlists = Wishlist::where('user_id', Auth::id())->with('product')->paginate(9);
+
+        return view('customer.wishlist', compact('wishlists'));
     }
 
     public function store($id)
