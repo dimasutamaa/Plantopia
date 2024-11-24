@@ -2,6 +2,24 @@
 
 @section('content')
     <div class="container mt-5">
+        @if ($inWishlist)
+            <form action="{{ route('wishlist.destroy', $product->id) }}" method="POST" class="float-end">
+                @csrf
+                @method('DELETE')
+
+                <button type="submit" class="p-0 m-0 align-baseline btn btn-link text-decoration-none">
+                    <i class="fa-solid fa-heart fa-xl" style="color: #d61c1c"></i>
+                </button>
+            </form>
+        @else
+            <form action="{{ route('wishlist.store', $product->id) }}" method="POST" class="float-end">
+                @csrf
+                <button type="submit" class="p-0 m-0 align-baseline btn btn-link text-decoration-none">
+                    <i class="fa-regular fa-heart fa-xl" style="color: #0a0a0a"></i>
+                </button>
+            </form>
+        @endif
+
         <form action="{{ route('cart.store') }}" method="POST">
             @csrf
 
@@ -22,10 +40,6 @@
                     <div class="product-details">
                         <!-- Judul Produk -->
                         <h2 class="fw-bold">{{ $product->title }}</h2>
-
-                        <span class="float-end">
-                            <i class="fa-regular fa-heart fa-xl"></i>
-                        </span>
 
                         <h5 class="fw-bold"> Description</h5>
 
@@ -67,4 +81,26 @@
             @endforelse
         </div>
     </div>
+@endsection
+
+@section('customJs')
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: "{{ session('success') }}",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        @elseif (session('error'))
+            Swal.fire({
+                icon: "error",
+                title: "Fail!",
+                text: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        @endif
+    </script>
 @endsection

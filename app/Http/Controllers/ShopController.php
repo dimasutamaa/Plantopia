@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -25,6 +27,10 @@ class ShopController extends Controller
             ->limit(3)
             ->get();
 
-        return view('products.details', compact('product', 'similar_products'));
+        $inWishlist = Wishlist::where('product_id', $id)
+            ->where('user_id', Auth::id())
+            ->exists();
+
+        return view('products.details', compact('product', 'similar_products', 'inWishlist'));
     }
 }

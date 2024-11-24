@@ -28,6 +28,9 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+    Route::post('/wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
+    Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
+
     Route::get('/order', [OrderController::class, 'index'])->name('orderHistory');
     Route::get('/order/details', [OrderController::class, 'show'])->name('orderDetails');
 });

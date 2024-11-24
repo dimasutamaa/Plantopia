@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="container mb-3">
-        <h3 class="fw-semibold mb-4">Wishlist</h3>
+        <h3 class="mb-4 fw-semibold">Wishlist</h3>
     </div>
 
     {{-- Search --}}
