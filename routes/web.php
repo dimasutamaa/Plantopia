@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\customer\OrderController;
 use App\Http\Controllers\HomeController;
@@ -39,4 +40,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::put('/admin/product/edit/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/admin/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+    Route::get('/admin/shippings', [ShippingController::class, 'index'])->name('shipping.list');
+    Route::post('/admin/shippings', [ShippingController::class, 'store'])->name('shipping.store');
+    Route::get('/admin/shipping/edit/{id}', [ShippingController::class, 'edit'])->name('shipping.edit');
+    Route::put('/admin/shipping/edit/{id}', [ShippingController::class, 'update'])->name('shipping.update');
+    Route::delete('/admin/shippings/{id}', [ShippingController::class, 'destroy'])->name('shipping.destroy');
 });
