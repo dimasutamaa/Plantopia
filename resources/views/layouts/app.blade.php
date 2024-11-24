@@ -65,7 +65,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::user() && Auth::user()->isCustomer())
                             <li class = "nav-item">
-                                <a class="nav-link d-flex align-items-center" href = "{{route('user.cart')}}">
+                                <a class="nav-link d-flex align-items-center" href = "{{ route('cart.index') }}">
                                     <svg class="me-2"width="25" height="25" viewBox="0 0 30 30" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -106,7 +106,7 @@
                                             {{ __('Admin Panel') }}
                                         </a>
                                     @else
-                                        <a class="dropdown-item" href="{{route('orderHistory')}}">
+                                        <a class="dropdown-item" href="{{ route('orderHistory') }}">
                                             {{ __('History') }}
                                         </a>
                                     @endif
@@ -192,6 +192,10 @@
             </div>
         </footer>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    @yield('customJs')
 </body>
 
 </html>

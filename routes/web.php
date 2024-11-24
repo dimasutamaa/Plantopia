@@ -20,7 +20,12 @@ Route::get('/products/{id}', [ShopController::class, 'show'])->name('products.sh
 
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/profile', [UserController::class, 'index'])->name('user.profile');
-    Route::get('/cart', [CartController::class, 'index'])->name('user.cart');
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+    Route::put('/cart/{cart}', [CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
+
     Route::get('/order', [OrderController::class, 'index'])->name('orderHistory');
     Route::get('/order/details', [OrderController::class, 'show'])->name('orderDetails');
 });
