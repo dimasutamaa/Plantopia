@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\customer\OrderController;
+use App\Http\Controllers\customer\WishlistController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
@@ -26,6 +27,7 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::put('/cart/{cart}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
     Route::get('/order', [OrderController::class, 'index'])->name('orderHistory');
     Route::get('/order/details', [OrderController::class, 'show'])->name('orderDetails');
 });

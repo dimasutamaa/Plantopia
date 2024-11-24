@@ -109,6 +109,10 @@
                                         <a class="dropdown-item" href="{{ route('orderHistory') }}">
                                             {{ __('History') }}
                                         </a>
+
+                                        <a class="dropdown-item" href="{{route('wishlist')}}">
+                                            {{ __('Wishlist') }}
+                                        </a>
                                     @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
