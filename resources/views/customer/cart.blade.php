@@ -47,6 +47,12 @@
                         </select>
                     </div>
 
+                    <!-- Address -->
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Delivery Address</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
                     <!-- Horizontal Line -->
                     <hr class="border opacity-100 border-dark" />
 
@@ -95,10 +101,12 @@
                 const selectedOption = $(this).find(':selected');
                 const shippingPrice = parseFloat(selectedOption.data('price') || 0);
 
-                $('#shipping-price').text(`Rp. ${shippingPrice.toLocaleString('id-ID', { minimumFractionDigits: 2 })}`);
+                $('#shipping-price').text(
+                    `Rp. ${shippingPrice.toLocaleString('id-ID', { minimumFractionDigits: 2 })}`);
 
                 const totalCost = cartTotal + shippingPrice;
-                $('#total-cost').text(`Rp. ${totalCost.toLocaleString('id-ID', { minimumFractionDigits: 2 })}`);
+                $('#total-cost').text(
+                    `Rp. ${totalCost.toLocaleString('id-ID', { minimumFractionDigits: 2 })}`);
             });
         });
     </script>
