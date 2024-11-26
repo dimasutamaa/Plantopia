@@ -55,7 +55,7 @@
         </div>
 
         <div class="mt-5">
-            {{ $products->links('pagination::bootstrap-5') }}
+            {{ $products->appends(request()->query())->links('pagination::bootstrap-5') }}
         </div>
     </div>
     {{-- Product --}}
