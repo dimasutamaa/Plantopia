@@ -9,9 +9,25 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->latest()->paginate(9);
+        $query = Product::with('category');
+
+        if ($search = $request->input('search')) {
+            $query->where('title', 'like', '%' . $search . '%');
+        }
+
+        if ($sort = $request->input('sort')) {
+            if ($sort === 'highest') {
+                $query->orderBy('price', 'desc');
+            } elseif ($sort === 'lowest') {
+                $query->orderBy('price', 'asc');
+            }
+        } else {
+            $query->latest();
+        }
+
+        $products = $query->paginate(9);
 
         return view('products.index', compact('products'));
     }

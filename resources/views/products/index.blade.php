@@ -19,23 +19,24 @@
 
     {{-- Search --}}
     <div class="container mt-4">
-        <section class="mb-4 justify-content-between d-flex">
+        <form method="GET" action="{{ route('shop') }}" class="mb-4 justify-content-between d-flex">
             <div class="input-group" style="width: 250px">
-                <input type="search" id="form1" class="form-control form-control-sm" placeholder="Search"
-                    aria-label="Search">
-                <button type="button" class="btn btn-primary btn-sm">
+                <input type="search" name="search" id="searchInput" class="form-control form-control-sm"
+                    placeholder="Search" aria-label="Search" value="{{ request('search') }}">
+                <button type="button" id="searchButton" class="btn btn-primary btn-sm">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
 
             <div class="d-flex align-items-center">
                 <span class="me-2">Sort</span>
-                <select class="form-select" aria-label="Default select example">
-                    <option value="1">Highest</option>
-                    <option value="2">Lowest</option>
+                <select class="form-select" name="sort" id="sortSelect">
+                    <option value="" {{ request('sort') === null ? 'selected' : '' }}>Default</option>
+                    <option value="highest" {{ request('sort') === 'highest' ? 'selected' : '' }}>Highest</option>
+                    <option value="lowest" {{ request('sort') === 'lowest' ? 'selected' : '' }}>Lowest</option>
                 </select>
             </div>
-        </section>
+        </form>
     </div>
     {{-- Search --}}
 
@@ -58,4 +59,34 @@
         </div>
     </div>
     {{-- Product --}}
+@endsection
+
+@section('customJs')
+    <script>
+        $(document).ready(function() {
+            function updateUrl() {
+                const search = $('#searchInput').val();
+                const sort = $('#sortSelect').val();
+                let url = "{{ route('shop') }}";
+
+                const params = [];
+                if (search) params.push(`search=${encodeURIComponent(search)}`);
+                if (sort) params.push(`sort=${encodeURIComponent(sort)}`);
+
+                if (params.length > 0) {
+                    url += '?' + params.join('&');
+                }
+
+                window.location.href = url;
+            }
+
+            $('#sortSelect').change(function() {
+                updateUrl();
+            });
+
+            $('#searchButton').click(function() {
+                updateUrl();
+            });
+        });
+    </script>
 @endsection
