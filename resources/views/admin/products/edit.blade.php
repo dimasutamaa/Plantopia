@@ -4,7 +4,7 @@
     <div class="my-2 container-fluid">
         <div class="mb-2 row">
             <div class="col-sm-6">
-                <h2>Create Product</h2>
+                <h2>Edit Product</h2>
             </div>
             <div class="text-end col-sm-6">
                 <a href="{{ route('product.list') }}" class="btn btn-primary">Back</a>
