@@ -17,14 +17,15 @@
                 <x-cart-table :cartItems="$cartItems" />
 
                 <!-- Rincian Pembayaran -->
-                <div class="container mt-5">
+                <form action="{{ route('processOrder') }}" method="POST" class="container mt-5">
+                    @csrf
                     <!-- Shipping Type -->
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <span>Shipping type</span>
-                        <select id="shipping-type" class="w-auto form-select ms-3" aria-label="Shipping type">
+                        <select id="shipping-type" name="shipping_type" class="w-auto form-select ms-3" required>
                             <option value="" selected disabled>Shipping method</option>
                             @foreach ($shippings as $shipping)
-                                <option value="{{ $shipping->id }}" data-price="{{ $shipping->price }}">
+                                <option value="{{ $shipping->type }}" data-price="{{ $shipping->price }}">
                                     {{ $shipping->type }}
                                 </option>
                             @endforeach
@@ -35,22 +36,23 @@
                     <div class="mb-3 d-flex justify-content-between">
                         <span>Shipping cost</span>
                         <span id="shipping-price" class="fw-bold">Rp. 0,00</span>
+                        <input type="hidden" id="hidden-shipping-price" name="shipping_price" value="0">
                     </div>
 
                     <!-- Payment Method -->
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <span>Payment method</span>
-                        <select class="w-auto form-select ms-3" aria-label="Payment method">
-                            <option selected>Bank Transfer</option>
-                            <option value="1">Credit Card</option>
-                            <option value="2">Cash on Delivery</option>
+                        <select name="payment" class="w-auto form-select ms-3" required>
+                            <option value="Bank Transfer" selected>Bank Transfer</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Cash on Delivery">Cash on Delivery</option>
                         </select>
                     </div>
 
                     <!-- Address -->
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Delivery Address</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <label for="address" class="form-label">Delivery Address</label>
+                        <textarea name="address" class="form-control" id="address" rows="3" required></textarea>
                     </div>
 
                     <!-- Horizontal Line -->
@@ -60,13 +62,14 @@
                     <div class="py-3 d-flex justify-content-between fw-bold">
                         <span>Total Cost</span>
                         <span id="total-cost">{{ 'Rp. ' . number_format($cartTotal, 2, ',', '.') }}</span>
+                        <input type="hidden" id="hidden-total-cost" name="total_cost" value="{{ $cartTotal }}">
                     </div>
 
                     <!-- Pay Now Button -->
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="px-4 py-2 btn btn-success">Pay Now</button>
                     </div>
-                </div>
+                </form>
             </div>
         @endif
     </div>
@@ -91,9 +94,7 @@
                 timer: 2000
             });
         @endif
-    </script>
 
-    <script>
         $(document).ready(function() {
             const cartTotal = {{ $cartTotal ?? 0 }};
 
@@ -103,10 +104,12 @@
 
                 $('#shipping-price').text(
                     `Rp. ${shippingPrice.toLocaleString('id-ID', { minimumFractionDigits: 2 })}`);
+                $('#hidden-shipping-price').val(shippingPrice);
 
                 const totalCost = cartTotal + shippingPrice;
                 $('#total-cost').text(
                     `Rp. ${totalCost.toLocaleString('id-ID', { minimumFractionDigits: 2 })}`);
+                $('#hidden-total-cost').val(totalCost);
             });
         });
     </script>

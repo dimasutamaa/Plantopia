@@ -64,4 +64,14 @@ class User extends Authenticatable
     {
         return $this->type === 'user';
     }
+
+    public function cartItems()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class)->orderBy('created_at', 'desc');
+    }
 }

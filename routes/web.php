@@ -31,8 +31,9 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::post('/wishlist/{id}', [WishlistController::class, 'store'])->name('wishlist.store');
     Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 
-    Route::get('/order', [OrderController::class, 'index'])->name('orderHistory');
-    Route::get('/order/details', [OrderController::class, 'show'])->name('orderDetails');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orderHistory');
+    Route::get('/order/details/{id}', [OrderController::class, 'show'])->name('orderDetails');
+    Route::post('/order', [OrderController::class, 'store'])->name('processOrder');
 });
 
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
