@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class OrderController extends Controller
 {
@@ -16,9 +17,13 @@ class OrderController extends Controller
         return view('customer.order-history', compact('orders'));
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('customer.order-details');
+        $order = Order::findOrFail($id);
+
+        if (Gate::authorize('view', $order)) {
+            return view('customer.order-details', compact('order'));
+        }
     }
 
     public function store(Request $request)
