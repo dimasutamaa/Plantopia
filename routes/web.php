@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OrderController as AdminOrderController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ShippingController;
 use App\Http\Controllers\CartController;
@@ -57,4 +58,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/shipping/edit/{id}', [ShippingController::class, 'edit'])->name('shipping.edit');
     Route::put('/admin/shipping/edit/{id}', [ShippingController::class, 'update'])->name('shipping.update');
     Route::delete('/admin/shippings/{id}', [ShippingController::class, 'destroy'])->name('shipping.destroy');
+
+    Route::get('/admin/orders', [AdminOrderController::class, 'index'])->name('order.list');
+    Route::get('/admin/order/{id}', [AdminOrderController::class, 'show'])->name('order.show');
+    Route::put('/admin/order/{order}', [AdminOrderController::class, 'update'])->name('order.update');
 });
