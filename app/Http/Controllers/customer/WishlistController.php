@@ -10,9 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $wishlists = Wishlist::where('user_id', Auth::id())->with('product')->paginate(9);
+        $query = Wishlist::where('user_id', Auth::id())->with('product');
+
+        if ($search = $request->input('search')) {
+            $query->whereHas('product', function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%');
+            });
+        }
+
+        $wishlists = $query->paginate(9);
 
         return view('customer.wishlist', compact('wishlists'));
     }

@@ -6,17 +6,17 @@
     </div>
 
     {{-- Search --}}
-    @if (count($wishlists) > 0)
+    @if ($wishlists->isNotEmpty() || Request::get('search'))
         <div class="container mt-4">
-            <section class="mb-4 justify-content-between d-flex">
+            <form method="GET" action="{{ route('wishlist') }}" class="mb-4 justify-content-between d-flex">
                 <div class="input-group" style="width: 250px; height: 35px">
-                    <input type="search" id="form1" class="form-control form-control-sm" placeholder="Search"
-                        aria-label="Search">
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <input type="search" name="search" id="searchInput" class="form-control form-control-sm"
+                        placeholder="Search" aria-label="Search" value="{{ request('search') }}">
+                    <button type="button" id="searchButton" class="btn btn-success btn-sm">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-            </section>
+            </form>
         </div>
     @endif
     {{-- Search --}}
@@ -40,11 +40,16 @@
                 </div>
             @empty
                 <div class="mx-auto text-center text-secondary-emphasis">
-                    <h4>Your wishlist is empty</h4>
-                    <a href="{{ route('shop') }}"
-                        class="fs-6 link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-                        Explore our products
-                    </a>
+                    @if (Request::get('search'))
+                        <h5 class="text-muted">Can't find that plant...</h5>
+                        <a href="{{ route('wishlist') }}" class="btn btn-success btn-sm">Clear search</a>
+                    @else
+                        <h4>Your wishlist is empty</h4>
+                        <a href="{{ route('shop') }}"
+                            class="fs-6 link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                            Explore our products
+                        </a>
+                    @endif
                 </div>
             @endforelse
         </div>
@@ -54,4 +59,28 @@
         </div>
     </div>
     {{-- Product --}}
+@endsection
+
+@section('customJs')
+    <script>
+        $(document).ready(function() {
+            function updateUrl() {
+                const search = $('#searchInput').val();
+                let url = "{{ route('wishlist') }}";
+
+                const params = [];
+                if (search) params.push(`search=${encodeURIComponent(search)}`);
+
+                if (params.length > 0) {
+                    url += '?' + params.join('&');
+                }
+
+                window.location.href = url;
+            }
+
+            $('#searchButton').click(function() {
+                updateUrl();
+            });
+        });
+    </script>
 @endsection
