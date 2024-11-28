@@ -17,7 +17,7 @@
                 <div class="mx-2">
                     <p class="fw-semibold fs-4" style="letter-spacing: 0.1rem">Login.</p>
 
-                    <div>
+                    <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input id="email" type="email" class="form-control mb-1 @error('email') is-invalid @enderror"
                             placeholder="email" name="email" value="{{ old('email') }}" required autocomplete="email"
@@ -30,7 +30,7 @@
                         @enderror
                     </div>
 
-                    <div>
+                    <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input id="password" type="password"
                             class="form-control mb-1 @error('password') is-invalid @enderror" placeholder="password"
@@ -43,7 +43,7 @@
                         @enderror
                     </div>
 
-                    <div class="mt-3">
+                    <div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                 {{ old('remember') ? 'checked' : '' }}>
