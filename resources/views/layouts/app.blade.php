@@ -14,31 +14,11 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+    <link rel="stylesheet" href="{{ asset('customer-assets/style.css') }}">
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="https://kit.fontawesome.com/703c7fe880.js" crossorigin="anonymous"></script>
-
-    <style>
-        .vertical-line {
-            display: inline-block;
-            width: 1px;
-            height: 25px;
-            background-color: #1E1E1E;
-            margin: 0 10px;
-        }
-
-        .navbar-logo {
-            letter-spacing: 0.15em;
-        }
-
-        .hero {
-            background-image: url(../assets/landing-page-background.png);
-            background-size: cover;
-            background-position: center;
-            width: 400px;
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body>
@@ -110,7 +90,7 @@
                                             {{ __('History') }}
                                         </a>
 
-                                        <a class="dropdown-item" href="{{route('wishlist')}}">
+                                        <a class="dropdown-item" href="{{ route('wishlist') }}">
                                             {{ __('Wishlist') }}
                                         </a>
                                     @endif

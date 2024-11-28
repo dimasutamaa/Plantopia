@@ -4,7 +4,7 @@
     <div class="container">
         <div class="p-5 mb-5 text-center rounded bg-image"
             style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-            url('assets/landing-page-background.png'); 
+            url('customer-assets/landing-page-background.png'); 
             background-repeat: no-repeat; 
             background-size: cover; 
             background-position: center; 
