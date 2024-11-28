@@ -21,6 +21,7 @@
                                 <th>Total</th>
                                 <th>Shipping</th>
                                 <th>Date</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -31,6 +32,7 @@
                                     <td>{{ 'Rp ' . number_format($order->grand_total, 2, ',', '.') }}</td>
                                     <td>{{ $order->shipping_type }}</td>
                                     <td>{{ $order->created_at->format('d F Y') }}</td>
+                                    <td>{{ $order->status == 'Pending' ? 'Waiting for confirmation' : $order->status }}</td>
                                     <td><a href="{{ route('orderDetails', $order->id) }}">Details</a></td>
                                 </tr>
                             @endforeach
