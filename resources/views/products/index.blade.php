@@ -23,7 +23,7 @@
             <div class="input-group" style="width: 250px">
                 <input type="search" name="search" id="searchInput" class="form-control form-control-sm"
                     placeholder="Search" aria-label="Search" value="{{ request('search') }}">
-                <button type="button" id="searchButton" class="btn btn-primary btn-sm">
+                <button type="button" id="searchButton" class="btn btn-success btn-sm">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
@@ -49,7 +49,12 @@
                 </div>
             @empty
                 <div class="mx-auto text-center text-secondary-emphasis">
-                    <h4>Data Products not yet available.</h4>
+                    @if (Request::get('search'))
+                        <h5 class="text-muted">Can't find that plant...</h5>
+                        <a href="{{ route('shop') }}" class="btn btn-success btn-sm">Clear search</a>
+                    @else
+                        <h4>Data Products not yet available.</h4>
+                    @endif
                 </div>
             @endforelse
         </div>
