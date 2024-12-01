@@ -13,8 +13,30 @@
             <div class="col-lg-3 col-md-6">
                 <div class="shadow-sm card">
                     <div class="card-body">
-                        <h3>150</h3>
+                        <h3>{{ $orders }}</h3>
                         <p>Total Orders</p>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a href="{{ route('order.list') }}" class="text-secondary">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="shadow-sm card">
+                    <div class="card-body">
+                        <h3>{{ $products }}</h3>
+                        <p>Total Products</p>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a href="{{ route('product.list') }}" class="text-secondary">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="shadow-sm card">
+                    <div class="card-body">
+                        <h3>{{ $customers }}</h3>
+                        <p>Total Customers</p>
                     </div>
                     <div class="card-footer text-end">
                         <a href="#" class="text-secondary">More info <i class="fas fa-arrow-circle-right"></i></a>
