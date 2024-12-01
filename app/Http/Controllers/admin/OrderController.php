@@ -8,9 +8,19 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::with('user', 'items')->latest()->paginate(15);
+        $query = Order::with('user', 'items');
+
+        if ($search = $request->input('search')) {
+            $query->where('id', 'like', '%' . $search . '%')
+                ->orWhereHas('user', function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('email', 'like', '%' . $search . '%');
+                });
+        }
+
+        $orders = $query->latest()->paginate(15);
 
         return view('admin.orders.list', compact('orders'));
     }

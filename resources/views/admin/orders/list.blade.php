@@ -11,17 +11,23 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
-                <div class="card-tools">
+                <div class="card-tools d-flex">
                     <div class="input-group" style="width: 250px;">
-                        <form action="">
-                            <input type="text" name="table_search" class="form-control" placeholder="Search">
+                        <form action="{{ route('order.list') }}" method="GET" class="d-flex">
+                            <input type="text" name="search" id="searchInput" class="form-control" placeholder="Search"
+                                value="{{ Request::get('search') }}">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
                         </form>
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
                     </div>
+                    @if (Request::get('search'))
+                        <div>
+                            <a href="{{ route('order.list') }}" class="btn">Clear Search</a>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="p-0 card-body table-responsive">
@@ -68,7 +74,11 @@
                             <tr>
                                 <td colspan="6">
                                     <div class="text-center alert alert-danger">
-                                        Records Not Found
+                                        @if (Request::get('search'))
+                                            Search result not found.
+                                        @else
+                                            Records Not Found.
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
@@ -186,6 +196,24 @@
                         text: "Failed to fetch order details."
                     });
                 });
+            });
+
+            function updateUrl() {
+                const search = $('#searchInput').val();
+                let url = "{{ route('product.list') }}";
+
+                const params = [];
+                if (search) params.push(`search=${encodeURIComponent(search)}`);
+
+                if (params.length > 0) {
+                    url += '?' + params.join('&');
+                }
+
+                window.location.href = url;
+            }
+
+            $('#searchButton').click(function() {
+                updateUrl();
             });
         });
     </script>
