@@ -11,9 +11,18 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->latest()->paginate(10);
+        $query = Product::with('category');
+
+        if ($search = $request->input('search')) {
+            $query->where('title', 'like', '%' . $search . '%')
+                ->orWhereHas('category', function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%');
+                });
+        }
+
+        $products = $query->latest()->paginate(9);
 
         return view('admin.products.list', compact('products'));
     }
