@@ -11,4 +11,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        outDir: 'public/build', // Ensures assets are output to public/build
+        assetsDir: '', // Places assets directly in build without subdirectories
+    },
 });
