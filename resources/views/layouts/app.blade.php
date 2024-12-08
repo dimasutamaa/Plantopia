@@ -89,7 +89,7 @@
                                         <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                             {{ __('Profile') }}
                                         </a>
-                                        
+
                                         <a class="dropdown-item" href="{{ route('orderHistory') }}">
                                             {{ __('History') }}
                                         </a>
@@ -122,55 +122,18 @@
 
         <footer class="text-center text-black" style="background-color: #f8fafc">
             <div class="container pt-4">
-                <section class="mb-4 justify-content-between d-flex">
-                    <div class="">
+                <section class="justify-content-evenly d-flex">
+                    <div>
                         <a href="{{ route('home') }}" class="navbar-brand">
                             Plantopia.
                         </a>
                         <p class="text-muted">Let's find your dream plant!</p>
-                        <div class="gap-4 d-flex align-items-center">
-                            <a href="#"><i class="fa-brands fa-instagram fa-xl link-dark"></i></a>
-                            <a href="#"><i class="fa-brands fa-facebook fa-xl link-dark"></i></a>
-                            <a href="#"><i class="fa-brands fa-twitter fa-xl link-dark"></i></a>
-                        </div>
                     </div>
-                    <div class="gap-4 d-flex">
-                        <div>
-                            <h5>Information</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">About</a></li>
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">Product</a></li>
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">Blog</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5>Company</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">Community</a>
-                                </li>
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">Career</a></li>
-                                <li><a href="#" class="link-secondary link-underline link-underline-opacity-0">Our
-                                        Story</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5>Contact</h5>
-                            <ul class="list-unstyled">
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">Getting
-                                        Started</a></li>
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">Pricing</a></li>
-                                <li><a href="#"
-                                        class="link-secondary link-underline link-underline-opacity-0">Resources</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div>
+                        <span>Made with love <i class="fa-solid fa-heart fa-lg" style="color: #d61c1c"></i></span>
+                        <p><a href="https://github.com/dimasutamaa/Plantopia" target="_blank" class="link-dark link-offset-2 link-underline-opacity-100">
+                            View the Github Repo
+                        </p></a>
                     </div>
                 </section>
             </div>
