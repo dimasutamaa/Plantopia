@@ -17,8 +17,7 @@ class UserController extends Controller
     {
         $rules = [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id),
-            ],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique(User::class)->ignore($request->user()->id)],
         ];
 
         $validated = $request->validate($rules);

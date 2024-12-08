@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\OrderController as AdminOrderController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ShippingController;
+use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\customer\OrderController;
 use App\Http\Controllers\customer\WishlistController;
@@ -23,6 +24,7 @@ Route::get('/products/{id}', [ShopController::class, 'show'])->name('products.sh
 Route::middleware(['auth', 'user-access:user'])->group(function () {
     Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [UserController::class, 'update'])->name('profile.update');
+    Route::put('/password/update', [PasswordController::class, 'update'])->name('password.update');
 
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');

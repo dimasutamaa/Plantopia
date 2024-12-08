@@ -5,6 +5,9 @@
         <div class="mb-4">
             @include('profile.partials.update-profile-information-form')
         </div>
+        <div class="mb-5">
+            @include('profile.partials.update-password-form')
+        </div>
     </div>
 @endsection
 
