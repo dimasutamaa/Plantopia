@@ -86,6 +86,10 @@
                                             {{ __('Admin Panel') }}
                                         </a>
                                     @else
+                                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                                            {{ __('Profile') }}
+                                        </a>
+                                        
                                         <a class="dropdown-item" href="{{ route('orderHistory') }}">
                                             {{ __('History') }}
                                         </a>
