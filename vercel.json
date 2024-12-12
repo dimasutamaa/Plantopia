@@ -14,7 +14,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://plantopia-pi.vercel.app",
+        "APP_URL": "https://plantopia-liard.vercel.app",
         "APP_KEY": "base64:t6qRTIo7QD/Y8frF95g9xo5XuRVV+vJseVhT4a863fs=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
